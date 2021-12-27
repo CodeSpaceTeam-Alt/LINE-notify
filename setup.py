@@ -1,3 +1,6 @@
+""", module
+setup module
+"""
 from setuptools import setup, find_packages
 
 setup(
@@ -8,7 +11,7 @@ setup(
     package_dir={"": "src"},
     entry_points={
         "console_scripts": [
-            "line_notify = line_notify.line_utils:main"
+            "line_notify = line_notify.utils:main"
         ]
     }
 )
