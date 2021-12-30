@@ -42,8 +42,8 @@ class Line():
             No note
 
         """
-        if len(self.token) == 0:
-            print("token is invalid")
+        if self.token is None:
+            print("token is not set")
             return False
         url = "https://notify-api.line.me/api/notify"
         headers = {"Authorization": "Bearer " + self.token}
