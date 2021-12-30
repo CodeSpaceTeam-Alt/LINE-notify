@@ -16,9 +16,6 @@ class TestLine():
         line (Line): Line class
 
     """
-    def __init__(self):
-        self.line = None
-
     @pytest.fixture(scope='function', autouse=True)
     def setup(self):
         """setup, function

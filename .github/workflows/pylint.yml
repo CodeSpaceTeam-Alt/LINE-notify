@@ -27,4 +27,4 @@ jobs:
         pip install -r ${GITHUB_WORKSPACE}/requirements_test.txt
     - name: Analysing the code with pylint
       run: |
-        pylint $(find . -name "*.py" | xargs)
+        pylint -d R0903 $(find src -name "*.py" | xargs)
