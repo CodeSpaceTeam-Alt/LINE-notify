@@ -27,7 +27,7 @@ class TestLine():
             This function is called per function.
 
         """
-        token = getenv("SECRET_SETTING")
+        token = getenv("TOKEN")
         self.line = Line(token=token)
 
     def test_notify(self):
@@ -39,4 +39,4 @@ class TestLine():
             if self.line.notify err, test is failed.
 
         """
-        assert self.line.notify("test") is True
+        assert self.line.notify("test message from pytest") is True
