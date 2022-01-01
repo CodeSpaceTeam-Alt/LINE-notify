@@ -26,6 +26,7 @@ jobs:
         pipenv --python ${{ matrix.python-version }}
         pipenv install 
         pipenv install --dev
+        pipenv shell
     - name: Analysing the code with pylint
       run: |
-        pylint -d R0903 $(find src -name "*.py" | xargs)
+        pylint -d R0903 $(find src -name "*.py" -not -name __init__.py | xargs)

@@ -27,6 +27,7 @@ jobs:
         pipenv --python 3.10
         pipenv install 
         pipenv install --dev
+        pipenv shell
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
