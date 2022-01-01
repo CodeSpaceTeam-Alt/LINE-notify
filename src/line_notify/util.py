@@ -23,6 +23,7 @@ def get_args():
     """
     parser = ArgumentParser(description='line notify tool')
     parser.add_argument('--token', type=str, default="", help='token')
+    parser.add_argument('--message', type=str, default="test msg", help='message')
     return parser.parse_args()
 
 
@@ -37,7 +38,7 @@ def main():
     """
     opt = get_args()
     line = Line(token=opt.token)
-    return line.notify("test msg")
+    return line.notify(opt.message)
 
 
 if __name__ == "__main__":
