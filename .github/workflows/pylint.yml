@@ -22,11 +22,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pylint pipenv
-        pipenv --python ${{ matrix.python-version }}
-        pipenv install 
-        pipenv install --dev
-        pipenv shell
+        pip install pylint
+        pip install -r requirements.txt
+        pip install -r dev-requirements.txt
     - name: Analysing the code with pylint
       run: |
         pylint -d R0903 $(find src -name "*.py" -not -name __init__.py | xargs)
