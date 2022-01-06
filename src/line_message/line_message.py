@@ -55,8 +55,8 @@ class Line():
                 if path.isfile(img) is False:
                     print(img + " is not file.")
                     return False
-                with open(img, "rb")as f:
-                    files = {"imageFile": f}
+                with open(img, "rb")as img_fn:
+                    files = {"imageFile": img_fn}
                     res = post(url, headers=headers, data=payload, files=files)
             else:
                 res = post(url, headers=headers, data=payload)
