@@ -1,9 +1,9 @@
-"""line_notifier.py, module
+"""line_message.py, module
 
-Line notifier Class file
+Line Messanger Class file
 
 """
-
+from os import path
 from requests import post
 from requests.models import HTTPError
 
@@ -27,13 +27,14 @@ class Line():
     def __init__(self, token):
         self.token = token
 
-    def notify(self, msg):
+    def notify(self, msg, img=""):
         """notify, function
 
         notify message to LINE account
 
         Args:
             msg (str) : sending message
+            img (str) : img file
 
         Returns:
             Bool: If success to send message, return True.else, return False
@@ -48,8 +49,17 @@ class Line():
         url = "https://notify-api.line.me/api/notify"
         headers = {"Authorization": "Bearer " + self.token}
         payload = {"message": msg}
+        files = {}
         try:
-            res = post(url, headers=headers, data=payload)
+            if len(img) != 0:
+                if path.isfile(img) is False:
+                    print(img + " is not file.")
+                    return False
+                with open(img, "rb")as img_fn:
+                    files = {"imageFile": img_fn}
+                    res = post(url, headers=headers, data=payload, files=files)
+            else:
+                res = post(url, headers=headers, data=payload)
             res.raise_for_status()
         except HTTPError:
             print("post is failed")

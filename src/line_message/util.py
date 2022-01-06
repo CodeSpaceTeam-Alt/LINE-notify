@@ -6,7 +6,7 @@ Line notifier utilities
 
 from argparse import ArgumentParser
 import sys
-from line_notify.line_notifier import Line
+from line_message.line_message import Line
 
 
 def get_args():
@@ -23,7 +23,8 @@ def get_args():
     """
     parser = ArgumentParser(description='line notify tool')
     parser.add_argument('--token', type=str, default="", help='token')
-    parser.add_argument('--message', type=str, default="test msg", help='message')
+    parser.add_argument('--message', type=str, default="test msg", help='msg')
+    parser.add_argument('--img', type=str, default="", help='img file')
     return parser.parse_args()
 
 
@@ -38,7 +39,7 @@ def main():
     """
     opt = get_args()
     line = Line(token=opt.token)
-    return line.notify(opt.message)
+    return line.notify(opt.message, opt.img)
 
 
 if __name__ == "__main__":
