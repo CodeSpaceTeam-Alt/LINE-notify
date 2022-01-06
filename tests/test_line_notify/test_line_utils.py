@@ -4,7 +4,7 @@ pytest for utils.py
 
 from os import getenv
 import pytest
-from line_notify.line_notifier import Line
+from line_message.line_message import Line
 
 
 class TestLine():
@@ -39,4 +39,6 @@ class TestLine():
             if self.line.notify err, test is failed.
 
         """
-        assert self.line.notify("test message from pytest") is True
+        assert self.line.notify("pytest simple message") is True
+        assert self.line.notify("pytest dummy img", "dummy.png") is False
+        assert self.line.notify("pytest true img", "tests/test.png") is True
